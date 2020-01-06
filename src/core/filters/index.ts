@@ -1,1 +1,2 @@
-export * from './mongo-handle.error';
+export * from './mongo-exception.filter';
+export * from './bad-request.filter';
