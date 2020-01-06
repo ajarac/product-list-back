@@ -3,6 +3,7 @@ import { Body, Controller, Delete, Get, Param, Post, UseFilters } from '@nestjs/
 import { CategoryRepository } from '../repository';
 import { Category } from '../model/category.model';
 import { BadRequestFilter, MongoExceptionFilter } from '../../core/filters';
+import { CreateCategoryDTO } from '../dto';
 
 @Controller('categories')
 export class CategoryController {
@@ -15,7 +16,7 @@ export class CategoryController {
 
 	@Post()
 	@UseFilters(BadRequestFilter, MongoExceptionFilter)
-	async createCategory(@Body() body: { name: string }): Promise<Category> {
+	async createCategory(@Body() body: CreateCategoryDTO): Promise<Category> {
 		return await this.categoryRepository.createCategory(body.name);
 	}
 
