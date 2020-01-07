@@ -20,7 +20,8 @@ export class CategoryRepository {
   }
 
   async removeCategory(id: string): Promise<CategoryDocument> {
-    return await this.categoryModel.findOneAndRemove(id).exec();
+    const category: CategoryDocument = await this.categoryModel.findById(id).exec();
+    return await category.remove();
   }
 
 }
